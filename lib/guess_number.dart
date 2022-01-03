@@ -17,6 +17,7 @@ void main() {
     } while (input!.toLowerCase() != 'y' && input.toLowerCase() != 'n');
 
     if (input.toLowerCase() == 'n') {
+
       print("You've played $len games");
       for (var i = 0; i < myList.length; i++) {
         print("🚀 Game #${i+1}: ${myList[i]} guesses");
