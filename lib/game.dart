@@ -3,27 +3,22 @@ import 'dart:math';
 
 
 class Game {
-  //static const maxRandom = 100;
-  int? max;
+  static const defaultMaxRandom = 100;
   int? _answer;
   int _guessCount = 0;
+  static final List<int> guessCountList = [];
 
-  Game({int? maxRandom = 100}) {
-
-    if(maxRandom == null){
-      maxRandom = 100;
-    }
-    max = maxRandom;
+  Game({int maxRandom = defaultMaxRandom}) {
     var r = Random();
-    _answer = r.nextInt(max!) + 1;
-  }
-
-  int? get mRandom{
-    return max;
+    _answer = r.nextInt(maxRandom) + 1;
   }
 
   int get guessCount {
     return _guessCount;
+  }
+
+  void addCountList() {
+    guessCountList.add(_guessCount);
   }
 
   int doGuess(int num) {
@@ -35,6 +30,5 @@ class Game {
     } else {
       return 0;
     }
-
   }
 }

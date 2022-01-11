@@ -3,10 +3,10 @@
 import 'dart:io';
 import 'game.dart';
 
-var myList = <int>[];
-var len = myList.length;
+/*var myList = <int>[];
+var len = myList.length;*/
 
-void main() {
+/*void main() {
   while (true) {
     playGame();
     String? input;
@@ -27,47 +27,59 @@ void main() {
   }
 
   // end of program
-}
+}*/
 
-void playGame() {
-  stdout.write('Enter a maximum number to random: ');
+String playGame(var x,var game) {
+  /*stdout.write('Enter a maximum number to random: ');
   dynamic max = stdin.readLineSync();
   dynamic test = int.tryParse(max);
-  var game = Game(maxRandom:test);
+  var game = Game(maxRandom:test);*/
   var isCorrect = false;
+  var text = "";
+  //var title = '';
 
-  print("╔══════════════════════════════════════════════════════");
+  /*print("╔══════════════════════════════════════════════════════");
   print("║                ❄ GUESS THE NUMBER ❄                 ");
-  print("║──────────────────────────────────────────────────────");
+  print("║──────────────────────────────────────────────────────");*/
 
   //{Game.maxRandom}
 
   do {
-    stdout.write('║ Guess the number between 1 and ${game.max}: ');
-    var input = stdin.readLineSync();
+    //stdout.write('║ Guess the number between 1 and ${game.max}: ');
+    var input = x;
     var guess = int.tryParse(input!);
     if (guess == null) {
-      continue;
+      text = 'Enter incorrect information! Please enter numbers only.';
+      return text;
+      //continue;
     }
 //game.guessCount
     var result = game.doGuess(guess);
 
     if (result == 1) {
-      print('║ ➜ $guess is TOO HIGH! ▲');
-      print("║──────────────────────────────────────────────────────");
+      /*print('║ ➜ $guess is TOO HIGH! ▲');
+      print("║──────────────────────────────────────────────────────");*/
+      text = '$guess is TOO HIGH, Please Try Again.';
+      return text;
     } else if (result == -1) {
-      print('║ ➜ $guess is TOO LOW! ▼');
-      print("║──────────────────────────────────────────────────────");
+      /*print('║ ➜ $guess is TOO LOW! ▼');
+      print("║──────────────────────────────────────────────────────");*/
+      text = '$guess is TOO LOW, Please Try Again.';
+      return text;
     } else if (result == 0) {
-      print('║ ➜ $guess is CORRECT 🍸, total guesses: ${game.guessCount}');
-      print("║──────────────────────────────────────────────────────");
-      myList.add(game.guessCount);
+      /*print('║ ➜ $guess is CORRECT 🍸, total guesses: ${game.guessCount}');
+      print("║──────────────────────────────────────────────────────");*/
+      text = '$guess is CORRECT 🍸, total guesses : ${game.guessCount} times.';
       isCorrect = true;
+      return text;
+      //myList.add(game.guessCount);
+
+      //return text;
     }
   } while (!isCorrect);
-
-  print("║                     ✨ THE END ✨                     ");
+return text;
+  /*print("║                     ✨ THE END ✨                     ");
   print("║                    HAPPY NEW YEAR!                   ");
   print("║            May you have a joyous New Year.           ");
-  print("╚══════════════════════════════════════════════════════");
+  print("╚══════════════════════════════════════════════════════");*/
 }
